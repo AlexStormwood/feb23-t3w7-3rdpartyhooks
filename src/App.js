@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import { useLocalStorage } from 'react-use';
 
 function App() {
+
+  const [storedMessage, setStoredMessage] = useLocalStorage('message', '');
+
+  const [message, setMessage] = useState("");
+
+  // Component is loaded
+  // gap of time 
+  // Component is rendered
+  // gap of time 
+  // componentDidMount a.k.a useEffect(() => {}, [])  
+  // gap of time 
+  // componentWillUpdate a.k.a useEffect(() => {}, [message])
+
+  useEffect(() => {
+    setMessage(storedMessage);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      {message && <h1>{message}</h1>}
+
+
     </div>
   );
 }
