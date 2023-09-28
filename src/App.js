@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { useLocalStorage } from 'react-use';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import NumberGrabber from './NumberGrabber';
 
 function App() {
 
@@ -32,6 +34,26 @@ function App() {
     <div className="App">
 
       {message && <h1>{message}</h1>}
+
+
+
+      <BrowserRouter>
+
+      <ul>
+        <li>
+          <Link to="/1">Page 1</Link>
+        </li>
+        <li>
+          <Link to="/2">Page 2</Link>
+        </li>
+      </ul>      
+
+      <Routes>
+        <Route path="/:potato/:id/:banana" element={<NumberGrabber />} />
+
+      </Routes>
+      
+      </BrowserRouter>
 
 
     </div>
